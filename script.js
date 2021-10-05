@@ -1,18 +1,22 @@
-var btn = document.querySelector('.joke-container button');
-var jokeTxt = document.querySelector('.joke-container p');
+var time = document.getElementById("time");
 
-document.addEventListener('DOMContentLoaded', getJoke)
+var currentTime = moment().format("MM/DD/YYYY");
 
+time.textContent = currentTime;
 
-btn.addEventListener('click', getJoke);
+var btn = document.querySelector(".btn");
+var jokeTxt = document.querySelector(".joke-container");
 
-function getJoke(){
-    fetch('https://icanhazdadjoke.com/',{
-        headers:{
-            'Accept': 'application/json'
-            }
-    }) 
-    .then(data => data.json())
-    .then(object => jokeTxt.innerHTML = object.joke)
+document.addEventListener("DOMContentLoaded", getJoke);
+
+btn.addEventListener("click", getJoke);
+
+function getJoke() {
+  fetch("https://icanhazdadjoke.com/", {
+    headers: {
+      Accept: "application/json",
+    },
+  })
+    .then((data) => data.json())
+    .then((object) => (jokeTxt.innerHTML = object.joke));
 }
-
