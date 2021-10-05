@@ -1,6 +1,14 @@
 var searchBtn = document.getElementById("search-btn");
 var city = document.getElementById("search-bar");
 
+var weatherPrompt = document.getElementById("weather-prompt");
+var yesBtn = document.getElementById("yes-btn");
+var noBtn = document.getElementById("no-btn");
+var weatherContainer = document.getElementById("weather-container");
+var showWeatherOn = document.getElementById("show-weather");
+
+
+// Current Weather Function
 let weather = {
     apiKey: "275bd71fcc87ee1fd19695e4aee1f3bb",
     fetchWeather: function(city) {
@@ -16,7 +24,7 @@ let weather = {
             })
     },
 
-
+// Function to Display the Current Weather
     displayWeather: function(data) {
         const { name } = data;
         const { icon, description } = data.weather[0];
@@ -44,23 +52,41 @@ document.getElementById("search-bar").addEventListener("keyup", function(event) 
     }
 })
 
+
+
+
+
 // Event Listener Function to Show Weather Container if User Clicks "Yes"
 function showWeather() {
-    document.getElementById("weather-prompt").style.display = "none";
+    weatherPrompt.style.display = "none";
 };
 
-document.getElementById("yes-btn").addEventListener("click", function() {
+yesBtn.addEventListener("click", function() {
     showWeather();
 })
 
 
+
+
 // Event Listener Function to Hide Entire Weather Container if User Clicks "No"
 function hideWeather() {
-    document.getElementById("weather-container").style.display = "none";
+    weatherContainer.style.display = "none";
 }
 
-document.getElementById("no-btn").addEventListener("click", function() {
+noBtn.addEventListener("click", function() {
     hideWeather();
 })
 
 
+function changedMindShow() {
+    weatherContainer.style.visibility = "visible";
+}
+
+showWeatherOn.addEventListener("click", function() {
+    showWeather();
+})
+
+// When page loads, only the weather prompt should be showing.
+// When the user clicks yes, the weather container should display 
+// If the user clicks no, the container changes to just an image of a frog 
+// There should be a Show/Hide button that toggles the display so the user can change their mind later
