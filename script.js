@@ -43,3 +43,24 @@ document.getElementById("search-bar").addEventListener("keyup", function(event) 
         weather.search();
     }
 })
+
+// Event Listener Function to Show Weather Container if User Clicks "Yes"
+function showWeather() {
+    document.getElementById("weather-prompt").style.display = "none";
+};
+
+document.getElementById("yes-btn").addEventListener("click", function() {
+    showWeather();
+})
+
+
+// Event Listener Function to Hide Entire Weather Container if User Clicks "No"
+function hideWeather() {
+    document.getElementById("weather-container").style.display = "none";
+}
+
+document.getElementById("no-btn").addEventListener("click", function() {
+    hideWeather();
+})
+
+
