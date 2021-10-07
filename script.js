@@ -6,10 +6,10 @@ var inProgList = document.getElementById("inProg");
 var weatherPrompt = document.getElementById("weather-prompt");
 var yesBtn = document.getElementById("yes-btn");
 var noBtn = document.getElementById("no-btn");
-var showWeatherOn = document.getElementById("show-weather");
-var currentWeatherContainer = document.getElementById(
-  "current-weather-container"
-);
+var changedMindBtn = document.getElementById("changed-mind-btn")
+var changedMind = document.getElementById("changed-mind-container");
+var currentWeatherContainer = document.getElementById("current-weather-container");
+var hideWeatherBtn = document.getElementById("hide-weather-btn");
 
 // Current Weather Function
 let weather = {
@@ -28,51 +28,71 @@ let weather = {
   },
 
   // Function to Display the Current Weather
-  displayWeather: function (data) {
+    displayWeather: function (data) {
     const { name } = data;
     const { icon, description } = data.weather[0];
     const { temp } = data.main;
 
     document.getElementById("city").innerText = name;
     document.getElementById("icon").src =
-      "http://openweathermap.org/img/wn/" + icon + ".png";
+        "http://openweathermap.org/img/wn/" + icon + ".png";
     document.getElementById("description").innerText = description;
     document.getElementById("temp").innerText = temp + "° F";
-  },
-  search: function () {
+    },
+    search: function () {
     this.fetchWeather(document.getElementById("search-bar").value);
-  },
+    },
 };
 
 // Event Listener for Search Button upon Click
 searchBtn.addEventListener("click", function () {
-  weather.search();
+    weather.search();
 });
 
 // Event Listener for Search Bar if user hits Enter Key
 city.addEventListener("keyup", function (event) {
-  if (event.key == "Enter") {
+    if (event.key == "Enter") {
     weather.search();
-  }
+    }
 });
 
-// Event Listener to Hide Prompt
-yesBtn.onclick = function () {
-  currentWeatherContainer.style.display === "show";
-  weatherPrompt.style.display = "none";
+// Event Listener to Hide Prompt / Show Weather
+yesBtn.addEventListener("click", getWeather); 
+
+function getWeather () {
+    weatherPrompt.classList.add("hide");
+    currentWeatherContainer.classList.remove("hide");
+    changedMindBtn.classList.add("hide");
+    hideWeatherBtn.classList.remove("hide");
 };
 
-noBtn.onclick = function () {
-  weatherPrompt.style.display = "none";
+// Event Listener to Hide Weather / Show New Prompt
+noBtn.addEventListener("click", hideWeather);
+
+function hideWeather() {
+    changedMind.classList.remove("hide");
+    weatherPrompt.classList.add("hide");
+    currentWeatherContainer.classList.add("hide");
 };
 
-function changedMindShow() {
-  weatherContainer.style.visibility = "visible";
-}
+// Event Listener to Show Weather / Hide New Prompt
+changedMindBtn.addEventListener("click",getWeather);
 
-showWeatherOn.addEventListener("click", function () {
-  showWeather();
-});
+// Event Listener to Hide Weather
+hideWeatherBtn.addEventListener("click",hideWeather);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // When page loads, only the weather prompt should be showing.
 // When the user clicks yes, the weather container should display
