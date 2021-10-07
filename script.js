@@ -105,6 +105,8 @@ var btn = document.querySelector(".btn");
 var jokeTxt = document.querySelector(".joke-container");
 var hideBtn = document.querySelector(".hide-btn");
 var jokeBox = document.querySelector(".joke-box");
+var jokeReturn = document.querySelector(".return-box")
+var jokeReturnBtn = document.querySelector(".show-jokes")
 
 // displays joke on load
 document.addEventListener("DOMContentLoaded", getJoke);
@@ -124,8 +126,25 @@ function getJoke() {
 //hideBtn hides joke-box
 hideBtn.addEventListener("click", function () {
   hideJoke();
+  hideBtn.classList.add()
 });
 
 function hideJoke() {
-  jokeBox.style.display = "none";
+  jokeBox.classList.add('hide');
+  jokeReturn.classList.remove('hide')
 }
+
+// re-displays jokes if user clicks button
+jokeReturnBtn.addEventListener('click', function() {
+  returnJoke();
+})
+
+function returnJoke() {
+  jokeBox.classList.remove('hide')
+  jokeReturn.classList.add('hide')
+}
+
+
+
+
+

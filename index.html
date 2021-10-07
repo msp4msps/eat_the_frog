@@ -14,6 +14,7 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
@@ -83,11 +84,17 @@
         <button id="changed-mind-btn">I changed my mind. Show me some weather yo</button>
           </div>
               </article>
-              <article class="tile is-child notification is-warning joke-box">
+              <article class="tile is-child notification is-warning">
+                <div class="joke-box">
                 <p class="title">Jokes</p>
                 <p class="subtitle joke-container"></p>
                 <button class="btn button">Get New Joke</button>
                 <button class="hide-btn button">Don't show me jokes!</button>
+                </div>
+                <div class="return-box hide">
+                  <img class= "frogpic" src="./Assets/frog placeholder.jpg" width="300">
+                  <button class="show-jokes">Show me jokes again</button>
+                </div>
               </article>
             </div>
             <!-- <div class="tile is-parent">
