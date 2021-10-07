@@ -10,6 +10,7 @@ var changedMindBtn = document.getElementById("changed-mind-btn")
 var changedMind = document.getElementById("changed-mind-container");
 var currentWeatherContainer = document.getElementById("current-weather-container");
 var hideWeatherBtn = document.getElementById("hide-weather-btn");
+var frogChillingPic = document.getElementById("frog-chilling-pic");
 
 // Current Weather Function
 let weather = {
@@ -73,13 +74,27 @@ function hideWeather() {
     changedMind.classList.remove("hide");
     weatherPrompt.classList.add("hide");
     currentWeatherContainer.classList.add("hide");
+    frogChillingPic.classList.remove("hide");
 };
 
 // Event Listener to Show Weather / Hide New Prompt
-changedMindBtn.addEventListener("click",getWeather);
+changedMindBtn.addEventListener("click",getWeatherBack);
+
+function getWeatherBack() {
+    frogChillingPic.classList.add("hide");
+    currentWeatherContainer.classList.remove("hide");
+    changedMind.classList.add("hide");
+    hideWeatherBtn.classList.remove("hide");
+}
 
 // Event Listener to Hide Weather
-hideWeatherBtn.addEventListener("click",hideWeather);
+hideWeatherBtn.addEventListener("click",unhideWeather);
+
+function unhideWeather() {
+    changedMind.classList.remove("hide");
+    currentWeatherContainer.classList.add("hide");
+    weatherPrompt.classList.remove("hide");
+}
 
 
 
