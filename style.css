@@ -1,4 +1,12 @@
-/* #hidden-weather-container,
+
+#weather-container {
+    border: solid 2px black;
+}
+
+#show-weather {
+    visibility: hidden;
+}
+
 #current-weather-container {
-    display: none;
-} */
+    visibility: hidden;
+}

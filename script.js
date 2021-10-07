@@ -4,9 +4,8 @@ var city = document.getElementById("search-bar");
 var weatherPrompt = document.getElementById("weather-prompt");
 var yesBtn = document.getElementById("yes-btn");
 var noBtn = document.getElementById("no-btn");
-var weatherContainer = document.getElementById("weather-container");
 var showWeatherOn = document.getElementById("show-weather");
-
+var currentWeatherContainer = document.getElementById("current-weather-container");
 
 // Current Weather Function
 let weather = {
@@ -40,42 +39,30 @@ let weather = {
     }
 };
 
+
 // Event Listener for Search Button upon Click
-document.getElementById("search-btn").addEventListener("click", function() {
+searchBtn.addEventListener("click", function() {
     weather.search();
 })
 
 // Event Listener for Search Bar if user hits Enter Key
-document.getElementById("search-bar").addEventListener("keyup", function(event) {
+city.addEventListener("keyup", function(event) {
     if (event.key == "Enter") {
         weather.search();
     }
 })
 
 
-
-
-
-// Event Listener Function to Show Weather Container if User Clicks "Yes"
-function showWeather() {
+// Event Listener to Hide Prompt
+yesBtn.onclick = function() {
+    currentWeatherContainer.style.display === "show";
     weatherPrompt.style.display = "none";
-};
-
-yesBtn.addEventListener("click", function() {
-    showWeather();
-})
-
-
-
-
-// Event Listener Function to Hide Entire Weather Container if User Clicks "No"
-function hideWeather() {
-    weatherContainer.style.display = "none";
 }
 
-noBtn.addEventListener("click", function() {
-    hideWeather();
-})
+noBtn.onclick = function() {
+    weatherPrompt.style.display = "none";
+}
+
 
 
 function changedMindShow() {
@@ -85,6 +72,7 @@ function changedMindShow() {
 showWeatherOn.addEventListener("click", function() {
     showWeather();
 })
+
 
 // When page loads, only the weather prompt should be showing.
 // When the user clicks yes, the weather container should display 
