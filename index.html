@@ -1,35 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
-</head>
-<body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eat the Frog</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <img src="/Assets/frog.png" width="90" height="28" />
 
-    <div id="weather-prompt">
-        <h2>Would you like to see the weather?</h2>
-        <button id="yes-btn">Yes!</button>
-        <button id="no-btn">I'm good, thanks...</button>
-    </div>
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
 
-    <div id="current-weather-container">
-        <input id="search-bar" type="text" placeholder="Search">
-        <button id="search-btn">Search</button>
-        <h2 id="city">Denver</h2>
-        <div id="temp">Temp: 69°</div>
-        <div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <h1 class="navbar-item title"></h1>
+        </div>
+        <div class="navbar-start">
+          <h1 class="navbar-item title">Eat the Frog</h1>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="navbar-item title">
+              <h1 id="time"></h1>
+          </div>
+        </div>
+          <div class="navbar-item">
+            <div class="navbar-item title">
+              <button class="button is-info is-light"><i class="fas fa-frog 5x"></i>Badges <span class="tag is-success">9</span>
+              </button>
+           
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="section">
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-7">
+          <div class="tile">
+            <div class="tile is-parent is-vertical">
+              <!-- <article class="tile is-child notification is-primary">
+                <p class="title">Weather</p>
+                <p class="subtitle">Top tile</p>
+            <div id="weather-prompt">
+               <h2>Would you like to see the weather?</h2>
+              <button id="yes-btn">Yes!</button>
+            <button id="no-btn">I'm good, thanks...</button>
+               </div>
+          <div id="current-weather-container">
+            <input id="search-bar" type="text" placeholder="Search">
+            <button id="search-btn">Search</button>
+            <h2 id="city">Denver</h2>
+            <div id="temp">Temp: 69°</div>
+          <div>
             <div id="description">Sunny</div>
             <img src="http://openweather.map.org/img/wn/04n.png" alt="" id="icon" />
         </div>
-    </div>
+        </div>
 
-    <div id="show-weather">
+        <div id="show-weather">
         <button id="changed-mind-btn">I changed my mind. Show me some weather yo</button>
-    </div>
-    
-    <script src="./script.js"></script>
-</body>
+          </div>
+              </article> -->
+              <article class="tile is-child notification is-warning">
+                <p class="title">Jokes</p>
+                <p class="subtitle joke-container"></p>
+                <button class="btn button">Get New Joke</button>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child notification is-info">
+                <p class="title">+ AddWeather</p>
+              </article>
+            </div>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-danger">
+              <p class="title">+ Add New Daily Task</p>
+              <p class="subtitle">Eat the frog!</p>
+              <div class="content">
+                <form>
+                  <label for="fname">Frog to Eat Today!:</label><br>
+                  <input type="text" id="MyTextArea" name="fname"><br>
+                  <button id="saveBtn">Save</button>
+                </form>
+                <ul id="inProg"></ul>
+                <ul id="finished"></ul>
+                <!-- Content -->
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-success">
+            <div class="content">
+              <p class="title">Completed Task</p>
+              <p class="subtitle"></p>
+              <div class="content">
+                <!-- Content -->
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
