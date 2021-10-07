@@ -3,14 +3,12 @@ var city = document.getElementById("search-bar");
 var SaveMe = document.getElementById("saveBtn");
 var inProgList = document.getElementById("inProg");
 
-var weatherPrompt = document.getElementById("weather-prompt");
-var yesBtn = document.getElementById("yes-btn");
-var noBtn = document.getElementById("no-btn");
-var changedMindBtn = document.getElementById("changed-mind-btn")
-var changedMind = document.getElementById("changed-mind-container");
-var currentWeatherContainer = document.getElementById("current-weather-container");
-var hideWeatherBtn = document.getElementById("hide-weather-btn");
+var hideWeatherContainer = document.getElementById("hide-weather-container");
+var showWeatherContainer = document.getElementById("show-weather-container");
 var frogChillingPic = document.getElementById("frog-chilling-pic");
+var showWeatherBtn = document.getElementById("show-weather-btn")
+var hideWeatherBtn = document.getElementById("hide-weather-btn");
+
 
 // Current Weather Function
 let weather = {
@@ -57,62 +55,23 @@ city.addEventListener("keyup", function (event) {
     }
 });
 
-// Event Listener to Hide Prompt / Show Weather
-yesBtn.addEventListener("click", getWeather); 
-
-function getWeather () {
-    weatherPrompt.classList.add("hide");
-    currentWeatherContainer.classList.remove("hide");
-    changedMindBtn.classList.add("hide");
-    hideWeatherBtn.classList.remove("hide");
-};
-
-// Event Listener to Hide Weather / Show New Prompt
-noBtn.addEventListener("click", hideWeather);
+// Event Listener & Function to Hide Weather
+hideWeatherBtn.addEventListener("click", hideWeather)
 
 function hideWeather() {
-    changedMind.classList.remove("hide");
-    weatherPrompt.classList.add("hide");
-    currentWeatherContainer.classList.add("hide");
-    frogChillingPic.classList.remove("hide");
+    showWeatherContainer.classList.add("hide");
+    hideWeatherContainer.classList.remove("hide");
 };
 
-// Event Listener to Show Weather / Hide New Prompt
-changedMindBtn.addEventListener("click",getWeatherBack);
+// Event Listener & Function to Show Weather
+showWeatherBtn.addEventListener("click", showWeather)
 
-function getWeatherBack() {
-    frogChillingPic.classList.add("hide");
-    currentWeatherContainer.classList.remove("hide");
-    changedMind.classList.add("hide");
-    hideWeatherBtn.classList.remove("hide");
-}
-
-// Event Listener to Hide Weather
-hideWeatherBtn.addEventListener("click",unhideWeather);
-
-function unhideWeather() {
-    changedMind.classList.remove("hide");
-    currentWeatherContainer.classList.add("hide");
-    weatherPrompt.classList.remove("hide");
+function showWeather() {
+    hideWeatherContainer.classList.add("hide");
+    showWeatherContainer.classList.remove("hide");
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// When page loads, only the weather prompt should be showing.
-// When the user clicks yes, the weather container should display
-// If the user clicks no, the container changes to just an image of a frog
-// There should be a Show/Hide button that toggles the display so the user can change their mind later
 
 function addFrog(event) {
   event.preventDefault();

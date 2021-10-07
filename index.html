@@ -64,27 +64,23 @@
               <article class="tile is-child notification is-primary">
                 <p class="title">Weather</p>
                 <p class="subtitle">Top tile</p>
-            <div id="weather-prompt">
-                <h2>Would you like to see the weather?</h2>
-              <button id="yes-btn">Yes!</button>
-            <button id="no-btn">I'm good, thanks...</button>
-                </div>
-          <div id="current-weather-container" class="hide">
-            <input id="search-bar" type="text" placeholder="Search">
-            <button id="search-btn">Search</button>
-            <h2 id="city">Denver</h2>
-            <div id="temp">Temp: 69°</div>
-            <div>
-              <div id="description">Sunny</div>
-              <img src="http://openweather.map.org/img/wn/04n.png" alt="" id="icon" />
-              <button id="hide-weather-btn" class="hide">Hide</button>
-            </div>
-          </div>
 
-        <div id="changed-mind-container" class="hide">
-          <img class = "hide" id = "frog-chilling-pic" src="./Assets/chillin frog.jpeg" />
-        <button id="changed-mind-btn">I changed my mind. Show me some weather yo</button>
-          </div>
+            <div id="show-weather-container">
+              <input id="search-bar" type="text" placeholder="Search">
+              <button id="search-btn">Search</button>
+              <h2 id="city">Denver</h2>
+              <div id="temp">Temp: 69°</div>
+              <div>
+                <div id="description">Sunny</div>
+                <img src="http://openweather.map.org/img/wn/04n.png" alt="" id="icon" />
+                <button id="hide-weather-btn">Hide</button>
+              </div>
+            </div>
+
+            <div id="hide-weather-container" class="hide">
+              <img src="./Assets/chillin frog.jpeg" />
+              <button id="show-weather-btn">Show</button>
+            </div>
               </article>
               <article class="tile is-child notification is-warning joke-box">
                 <p class="title">Jokes</p>
