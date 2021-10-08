@@ -1,7 +1,7 @@
 var searchBtn = document.getElementById("search-btn");
 var city = document.getElementById("search-bar");
 var SaveMe = document.getElementById("saveBtn");
-var inProgList = document.getElementById("inProg");
+var inProgList = document.querySelector(".inProg");
 
 var weatherPrompt = document.getElementById("weather-prompt");
 var yesBtn = document.getElementById("yes-btn");
@@ -85,6 +85,7 @@ function addFrog(event) {
   localStorage.setItem("frog", infoZone);
   var newLine = document.createElement("li");
   newLine.textContent = infoZone;
+  newLine.className = "task";
   inProgList.append(newLine);
   var checkbox = document.createElement("input");
   checkbox.type = "checkbox";
@@ -129,3 +130,17 @@ hideBtn.addEventListener("click", function () {
 function hideJoke() {
   jokeBox.style.display = "none";
 }
+
+//Drag and Drop Task
+$(function () {
+  $("ul.droptrue").sortable({
+    connectWith: "ul",
+  });
+
+  $("ul.dropfalse").sortable({
+    connectWith: "ul",
+    dropOnEmpty: false,
+  });
+
+  $("#sortable1, #sortable2, #sortable3").disableSelection();
+});
