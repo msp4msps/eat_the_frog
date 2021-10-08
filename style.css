@@ -1,14 +1,36 @@
-
 #weather-container {
-    border: solid 2px black;
+  border: solid 2px black;
 }
 
 #show-weather {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 #current-weather-container {
-    visibility: hidden;
+  visibility: hidden;
+}
+
+.task {
+  list-style: none;
+  background-color: rgb(104, 252, 252);
+  padding: 10px;
+  color: black;
+  border-radius: 25px;
+  inline-size: auto;
+  overflow-wrap: break-word;
+}
+
+.none-task {
+  list-style: none;
+  background-color: tomato;
+  border-radius: 25px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.notification {
+  inline-size: auto;
+  overflow-wrap: break-word;
 }
 
 .hide {
