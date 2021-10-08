@@ -14,7 +14,8 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href = "style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
@@ -82,11 +83,17 @@
               <button id="show-weather-btn">Show</button>
             </div>
               </article>
-              <article class="tile is-child notification is-warning joke-box">
+              <article class="tile is-child notification is-warning">
+                <div class="joke-box">
                 <p class="title">Jokes</p>
                 <p class="subtitle joke-container"></p>
                 <button class="btn button">Get New Joke</button>
                 <button class="hide-btn button">Don't show me jokes!</button>
+                </div>
+                <div class="return-box hide">
+                  <img class= "frogpic" src="./Assets/frog placeholder.jpg" width="300">
+                  <button class="show-jokes">Show me jokes again</button>
+                </div>
               </article>
             </div>
             <!-- <div class="tile is-parent">
@@ -105,17 +112,22 @@
                   <input type="text" id="MyTextArea" name="fname"><br>
                   <button id="saveBtn">Save</button>
                 </form>
-                <ul id="inProg"></ul>
-                <ul id="finished"></ul>
+                <ul id="sortable1" class="droptrue inProg">
+                  <!-- <li class="ui-state-default">Item 1</li> -->
+                </ul>
+          
                 <!-- Content -->
               </div>
             </article>
           </div>
         </div>
-        <div class="tile is-parent">
+        <div class="tile is-parent droptrue connectedSortable" id="sortable">
           <article class="tile is-child notification is-success">
-            <div class="content">
+            <div class="content droptrue" id="sortable1">
               <p class="title">Completed Task</p>
+              <ul id="sortable" class="droptrue connectedSortable">
+                <li class="none-task">Frogs Eaten</li>
+              </ul>
               <p class="subtitle"></p>
               <div class="content">
                 <!-- Content -->
