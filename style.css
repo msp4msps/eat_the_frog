@@ -1,3 +1,6 @@
+.hide {
+    display: none;
+  
 #weather-container {
   border: solid 2px black;
 }
@@ -31,10 +34,6 @@
 .notification {
   inline-size: auto;
   overflow-wrap: break-word;
-}
-
-.hide {
-    display: none;
 }
 
 .frogpic {
