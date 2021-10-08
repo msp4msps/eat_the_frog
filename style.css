@@ -32,3 +32,17 @@
   inline-size: auto;
   overflow-wrap: break-word;
 }
+
+.hide {
+    display: none;
+}
+
+.frogpic {
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+}
+
+.show-jokes {
+    margin-top: 20px;
+}
