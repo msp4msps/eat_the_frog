@@ -10,3 +10,17 @@
 #current-weather-container {
     visibility: hidden;
 }
+
+.hide {
+    display: none;
+}
+
+.frogpic {
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+}
+
+.show-jokes {
+    margin-top: 20px;
+}
