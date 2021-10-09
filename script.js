@@ -92,7 +92,7 @@ function addFrog(event) {
   inProgList.append(newLine);
   for (let i = 0; i<infoZone.length; i++){
     var parseThis = JSON.parse(window.localStorage.getItem("frog"));
-    newLine.textContent(infoZone[i]);
+    newLine.textContent(parseThis[i]);
     inProgList.append(newLine);
   
 }}
