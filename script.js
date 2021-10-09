@@ -94,8 +94,8 @@ function addFrog(event) {
 console.log(infoZone)
 function getTask (){
 
-  if (parseThis === 0) {
-  
+  if (infoZone === 0) {
+  return null
 
   }
   else {
