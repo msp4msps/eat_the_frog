@@ -86,13 +86,13 @@ function addFrog(event) {
   event.preventDefault();
   var infoList = document.getElementById("MyTextArea").value;
   infoZone.push(infoList);
-  localStorage.setItem("frog", infoZone);
+  localStorage.setItem("frog", JSON.stringify(infoZone));
   var newLine = document.createElement("li");
   newLine.textContent = infoList;
   inProgList.append(newLine);
-  for (let i = 0; i<infoZone.length; i++){
-    var parseThis = JSON.parse(window.localStorage.getItem("frog"));
-    newLine.textContent(parseThis[i]);
+  var parseThis = JSON.parse(localStorage.getItem("frog"));
+  for (let i = 0; i<parseThis.length; i++){
+    newLine.textContent = parseThis[i];
     inProgList.append(newLine);
   
 }}
