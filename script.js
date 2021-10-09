@@ -72,10 +72,6 @@ function showWeather() {
 }
 
 
-// When page loads, only the weather prompt should be showing.
-// When the user clicks yes, the weather container should display 
-// If the user clicks no, the container changes to just an image of a frog 
-// There should be a Show/Hide button that toggles the display so the user can change their mind later
 var infoZone = [];
 
 
@@ -108,7 +104,7 @@ SaveMe.addEventListener("click", addFrog);
 
 var time = document.getElementById("time");
 
-var currentTime = moment().format("MM/DD/YYYY");
+var currentTime = moment().format("dddd, MMMM Do YYYY");
 
 time.textContent = currentTime;
 
@@ -176,7 +172,7 @@ function returnJoke() {
 
 // In order for badge counter to work, 
 var frogCounter = 0;
-var frogEaten = document.querySelector(".frog-eaten");
+var frogEaten = document.getElementById("frog-eaten");
 var isFrogEaten = false;
 
 // Updates Frogs Eaten Count on Screen and Sets Frog Count to  Client Storage
@@ -202,9 +198,9 @@ function getFrogs() {
 }
 
 // Function to Check if Frog is Eaten
-function checkFrogEaten() {
-  if ()
-}
+// function checkFrogEaten() {
+//   if ()
+// }
 
 // Function to Reset Count Every Week (*** WISH LIST ***)
 function resetFrogCount() {
@@ -212,3 +208,9 @@ function resetFrogCount() {
   setFrogsEaten();
 }
 
+var currentDay = moment();
+console.log(currentDay);
+
+if(currentDay === "Sunday") {
+  $("#frog-eaten").resetFrogCount();
+};
