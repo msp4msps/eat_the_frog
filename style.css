@@ -13,7 +13,7 @@
   visibility: hidden;
 }
 
-.task {
+.btnSpace {
   list-style: none;
   background-color: rgb(104, 252, 252);
   padding: 10px;
@@ -21,6 +21,10 @@
   border-radius: 25px;
   inline-size: auto;
   overflow-wrap: break-word;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 .none-task {
@@ -45,3 +49,7 @@
 .show-jokes {
     margin-top: 20px;
 }
+
+
+
+

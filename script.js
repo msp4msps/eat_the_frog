@@ -77,14 +77,27 @@ function addFrog(event) {
   event.preventDefault();
   var infoZone = document.getElementById("MyTextArea").value;
   localStorage.setItem("frog", infoZone);
+  var div = document.createElement("div");
+  div.className= "btnSpace";
   var newLine = document.createElement("li");
+  div.appendChild(newLine);
   newLine.textContent = infoZone;
   newLine.className = "task";
-  inProgList.append(newLine);
+  inProgList.append(div);
   var checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.value = 1;
   checkbox.name = "todo[]";
+  
+  var dltBtn = document.createElement("button");
+  div.append(dltBtn);
+  dltBtn.innerHTML = "Remove Task"
+  dltBtn.setAttribute("class", "button is-light is-small");
+  dltBtn.addEventListener("click", removeTask);
+
+  function removeTask() {
+    div.remove();
+  } 
 }
 
 SaveMe.addEventListener("click", addFrog);
