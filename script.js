@@ -76,7 +76,8 @@ function showWeather() {
 // When the user clicks yes, the weather container should display 
 // If the user clicks no, the container changes to just an image of a frog 
 // There should be a Show/Hide button that toggles the display so the user can change their mind later
-var infoZone = [];
+var infoZone = [] ;
+infoZone = JSON.parse(localStorage.getItem("frog"));
 
 
 function addFrog(event) {
@@ -84,16 +85,30 @@ function addFrog(event) {
   var infoList = document.getElementById("MyTextArea").value;
   infoZone.push(infoList);
   localStorage.setItem("frog", JSON.stringify(infoZone));
+  var parseThis = JSON.parse(localStorage.getItem("frog"));
   var newLine = document.createElement("li");
   newLine.textContent = infoList;
   newLine.className = "task";
   inProgList.append(newLine);
-  var parseThis = JSON.parse(localStorage.getItem("frog"));
-  for (let i = 0; i<parseThis.length; i++){
-    newLine.textContent = parseThis[i];
-    inProgList.append(newLine);
+};
+console.log(infoZone)
+function getTask (){
+
+  if (parseThis === 0) {
   
-}};
+
+  }
+  else {
+    for (let i = 0; i< infoZone.length; i++){
+      var newLine = document.createElement("li");
+      newLine.textContent = infoZone[i];
+      inProgList.append(newLine);
+
+  }}};
+  getTask();
+
+
+
 
 
     // localStorage.getItem("frog")
