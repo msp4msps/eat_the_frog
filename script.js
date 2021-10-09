@@ -152,3 +152,51 @@ function returnJoke() {
   jokeBox.classList.remove('hide')
   jokeReturn.classList.add('hide')
 }
+
+
+
+// Badge Counter ------- ( *** INCOMPLETE *** )
+
+// In order for badge counter to work, 
+var frogCounter = 0;
+var frogEaten = document.querySelector(".frog-eaten");
+var isFrogEaten = false;
+
+// Updates Frogs Eaten Count on Screen and Sets Frog Count to  Client Storage
+function setFrogsEaten() {
+  frogEaten.textContent = frogCounter;
+  localStorage.setItem("frogCount", frogCounter);
+}
+
+// The init function is called when the page loads
+function init() {
+  getFrogs();
+}
+
+// Function to Get Frogs Stored in Local Storage
+function getFrogs() {
+  var storedFrogs = localStorage.getItem("frogCount");
+  if (storedFrogs === null) {
+    frogCounter = 0;
+  } else {
+    frogCounter = storedFrogs;
+  }
+  frogEaten.textContent = frogCounter;
+}
+
+// Function to Check if Frog is Eaten
+function checkFrogEaten() {
+  if ()
+}
+
+// Function to Reset Count Every Week (*** WISH LIST ***)
+function resetFrogCount() {
+  frogCounter = 0;
+  setFrogsEaten();
+}
+
+
+
+
+
+
