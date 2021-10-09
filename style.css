@@ -45,3 +45,8 @@
 .show-jokes {
     margin-top: 20px;
 }
+
+.quote {
+  font-size: large;
+  font-family: fantasy;
+}
