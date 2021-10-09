@@ -72,20 +72,37 @@ function showWeather() {
 }
 
 
+// When page loads, only the weather prompt should be showing.
+// When the user clicks yes, the weather container should display 
+// If the user clicks no, the container changes to just an image of a frog 
+// There should be a Show/Hide button that toggles the display so the user can change their mind later
+var infoZone = [];
+
 
 function addFrog(event) {
   event.preventDefault();
-  var infoZone = document.getElementById("MyTextArea").value;
-  localStorage.setItem("frog", infoZone);
+  var infoList = document.getElementById("MyTextArea").value;
+  infoZone.push(infoList);
+  localStorage.setItem("frog", JSON.stringify(infoZone));
   var newLine = document.createElement("li");
-  newLine.textContent = infoZone;
+  newLine.textContent = infoList;
   newLine.className = "task";
   inProgList.append(newLine);
-  var checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.value = 1;
-  checkbox.name = "todo[]";
-}
+  var parseThis = JSON.parse(localStorage.getItem("frog"));
+  for (let i = 0; i<parseThis.length; i++){
+    newLine.textContent = parseThis[i];
+    inProgList.append(newLine);
+  
+}};
+
+
+    // localStorage.getItem("frog")
+    // JSON.parse(infoZone)
+//   var checkbox = document.createElement("input");
+//   checkbox.type = "checkbox";
+//   checkbox.value = 1;
+//   checkbox.name = "todo[]";
+
 
 SaveMe.addEventListener("click", addFrog);
 
@@ -151,8 +168,8 @@ jokeReturnBtn.addEventListener('click', function() {
 function returnJoke() {
   jokeBox.classList.remove('hide')
   jokeReturn.classList.add('hide')
-}
 
+}
 
 
 // Badge Counter ------- ( *** INCOMPLETE *** )
@@ -194,9 +211,4 @@ function resetFrogCount() {
   frogCounter = 0;
   setFrogsEaten();
 }
-
-
-
-
-
 
