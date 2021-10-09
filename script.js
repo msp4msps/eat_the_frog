@@ -80,19 +80,31 @@ showWeatherOn.addEventListener("click", function() {
 // When the user clicks yes, the weather container should display 
 // If the user clicks no, the container changes to just an image of a frog 
 // There should be a Show/Hide button that toggles the display so the user can change their mind later
+var infoZone = [];
 
 function addFrog(event) {
   event.preventDefault();
-  var infoZone = document.getElementById("MyTextArea").value;
+  var infoList = document.getElementById("MyTextArea").value;
+  infoZone.push(infoList);
   localStorage.setItem("frog", infoZone);
   var newLine = document.createElement("li");
-  newLine.textContent = infoZone;
+  newLine.textContent = infoList;
   inProgList.append(newLine);
-  var checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.value = 1;
-  checkbox.name = "todo[]";
-}
+  for (let i = 0; i<infoZone.length; i++){
+    var parseThis = JSON.parse(window.localStorage.getItem("frog"));
+    newLine.textContent(infoZone[i]);
+    inProgList.append(newLine);
+  
+}}
+
+
+    // localStorage.getItem("frog")
+    // JSON.parse(infoZone)
+//   var checkbox = document.createElement("input");
+//   checkbox.type = "checkbox";
+//   checkbox.value = 1;
+//   checkbox.name = "todo[]";
+
 
 SaveMe.addEventListener("click", addFrog);
 
@@ -131,5 +143,4 @@ hideBtn.addEventListener("click", function() {
 function hideJoke() {
   jokeBox.style.display='none';
 }
-=======
-}
+
