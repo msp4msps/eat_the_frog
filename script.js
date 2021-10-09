@@ -3,6 +3,7 @@ var city = document.getElementById("search-bar");
 var SaveMe = document.getElementById("saveBtn");
 var inProgList = document.querySelector(".inProg");
 
+// Weather Variables
 var hideWeatherContainer = document.getElementById("hide-weather-container");
 var showWeatherContainer = document.getElementById("show-weather-container");
 var frogChillingPic = document.getElementById("frog-chilling-pic");
@@ -214,3 +215,16 @@ console.log(currentDay);
 if(currentDay === "Sunday") {
   $("#frog-eaten").resetFrogCount();
 };
+
+
+// Reward Statement Every Sunday
+var congratulations = document.createElement("h1");
+
+function displayMessage() {
+  congratulations.innerText = ("Great job this week!");
+  // Add message that says how many frogs were eaten 
+  // VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+  // ----------------------------------------
+}
+
+
