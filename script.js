@@ -2,13 +2,14 @@ var searchBtn = document.getElementById("search-btn");
 var city = document.getElementById("search-bar");
 var SaveMe = document.getElementById("saveBtn");
 var inProgList = document.querySelector(".inProg");
+var completedList = document.querySelector(".complete");
+var completul = document.querySelector(".c1");
 
 var hideWeatherContainer = document.getElementById("hide-weather-container");
 var showWeatherContainer = document.getElementById("show-weather-container");
 var frogChillingPic = document.getElementById("frog-chilling-pic");
-var showWeatherBtn = document.getElementById("show-weather-btn")
+var showWeatherBtn = document.getElementById("show-weather-btn");
 var hideWeatherBtn = document.getElementById("hide-weather-btn");
-
 
 // Current Weather Function
 let weather = {
@@ -27,58 +28,71 @@ let weather = {
   },
 
   // Function to Display the Current Weather
-    displayWeather: function (data) {
+  displayWeather: function (data) {
     const { name } = data;
     const { icon, description } = data.weather[0];
     const { temp } = data.main;
 
     document.getElementById("city").innerText = name;
     document.getElementById("icon").src =
-        "http://openweathermap.org/img/wn/" + icon + ".png";
+      "http://openweathermap.org/img/wn/" + icon + ".png";
     document.getElementById("description").innerText = description;
     document.getElementById("temp").innerText = temp + "° F";
-    },
-    search: function () {
+  },
+  search: function () {
     this.fetchWeather(document.getElementById("search-bar").value);
-    },
+  },
 };
 
 // Event Listener for Search Button upon Click
 searchBtn.addEventListener("click", function () {
-    weather.search();
+  weather.search();
 });
 
 // Event Listener for Search Bar if user hits Enter Key
 city.addEventListener("keyup", function (event) {
-    if (event.key == "Enter") {
+  if (event.key == "Enter") {
     weather.search();
-    }
+  }
 });
 
 // Event Listener & Function to Hide Weather
-hideWeatherBtn.addEventListener("click", hideWeather)
+hideWeatherBtn.addEventListener("click", hideWeather);
 
 function hideWeather() {
-    showWeatherContainer.classList.add("hide");
-    hideWeatherContainer.classList.remove("hide");
-};
-
-// Event Listener & Function to Show Weather
-showWeatherBtn.addEventListener("click", showWeather)
-
-function showWeather() {
-    hideWeatherContainer.classList.add("hide");
-    showWeatherContainer.classList.remove("hide");
+  localStorage.setItem("weatherPref", "hide");
+  showWeatherContainer.classList.add("hide");
+  hideWeatherContainer.classList.remove("hide");
 }
 
+// Event Listener & Function to Show Weather
+showWeatherBtn.addEventListener("click", showWeather);
+
+function showWeather() {
+  localStorage.setItem("weatherPref", "show");
+  hideWeatherContainer.classList.add("hide");
+  showWeatherContainer.classList.remove("hide");
+}
 
 // When page loads, only the weather prompt should be showing.
-// When the user clicks yes, the weather container should display 
-// If the user clicks no, the container changes to just an image of a frog 
+// When the user clicks yes, the weather container should display
+// If the user clicks no, the container changes to just an image of a frog
 // There should be a Show/Hide button that toggles the display so the user can change their mind later
-var infoZone = [] ;
+var infoZone = [];
 infoZone = JSON.parse(localStorage.getItem("frog"));
+completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
 
+function setLocalStorage() {
+  list = inProgList.children;
+  console.log(list);
+  for (let i = 0; i < list.length; i++) {
+    infoZone = [];
+    console.log(list[i].textContent);
+    infoZone.push(list[i].textContent);
+    console.log(infoZone);
+    localStorage.setItem("frog", JSON.stringify(infoZone));
+  }
+}
 
 function addFrog(event) {
   event.preventDefault();
@@ -90,34 +104,38 @@ function addFrog(event) {
   newLine.textContent = infoList;
   newLine.className = "task";
   inProgList.append(newLine);
-};
-console.log(infoZone)
-function getTask (){
-
-  if (infoZone === 0) {
-  return null
-
-  }
-  else {
-    for (let i = 0; i< infoZone.length; i++){
+}
+console.log(infoZone);
+function getTask() {
+  if (infoZone === null) {
+    infoZone = [];
+  } else {
+    for (let i = 0; i < infoZone.length; i++) {
       var newLine = document.createElement("li");
+      newLine.className = "task";
       newLine.textContent = infoZone[i];
       inProgList.append(newLine);
+    }
+  }
+  if (completedTasks === null) {
+    completedTasks = [];
+  } else {
+    for (let i = 0; i < completedTasks.length; i++) {
+      var newLine = document.createElement("li");
+      newLine.className = "task";
+      newLine.textContent = completedTasks[i];
+      completul.append(newLine);
+    }
+  }
+}
+getTask();
 
-  }}};
-  getTask();
-
-
-
-
-
-    // localStorage.getItem("frog")
-    // JSON.parse(infoZone)
+// localStorage.getItem("frog")
+// JSON.parse(infoZone)
 //   var checkbox = document.createElement("input");
 //   checkbox.type = "checkbox";
 //   checkbox.value = 1;
 //   checkbox.name = "todo[]";
-
 
 SaveMe.addEventListener("click", addFrog);
 
@@ -132,8 +150,8 @@ var btn = document.querySelector(".btn");
 var jokeTxt = document.querySelector(".joke-container");
 var hideBtn = document.querySelector(".hide-btn");
 var jokeBox = document.querySelector(".joke-box");
-var jokeReturn = document.querySelector(".return-box")
-var jokeReturnBtn = document.querySelector(".show-jokes")
+var jokeReturn = document.querySelector(".return-box");
+var jokeReturnBtn = document.querySelector(".show-jokes");
 
 // displays joke on load
 document.addEventListener("DOMContentLoaded", getJoke);
@@ -152,21 +170,34 @@ function getJoke() {
 
 //hideBtn hides joke-box
 hideBtn.addEventListener("click", function () {
+  localStorage.setItem("jokePref", "hide");
   hideJoke();
-  hideBtn.classList.add()
+  hideBtn.classList.add();
 });
 
 function hideJoke() {
-  jokeBox.classList.add('hide');
-  jokeReturn.classList.remove('hide')
+  jokeBox.classList.add("hide");
+  jokeReturn.classList.remove("hide");
 }
+
+function getPreferences() {
+  var weatherPref = localStorage.getItem("weatherPref");
+  var jokePref = localStorage.getItem("jokePref");
+  if (weatherPref === "hide") {
+    hideWeather();
+  }
+  if (jokePref === "hide") {
+    hideJoke();
+  }
+}
+
+getPreferences();
 
 //Drag and Drop Task
 $(function () {
   $("ul.droptrue").sortable({
     connectWith: "ul",
   });
-
   $("ul.dropfalse").sortable({
     connectWith: "ul",
     dropOnEmpty: false,
@@ -176,20 +207,36 @@ $(function () {
 });
 
 // re-displays jokes if user clicks button
-jokeReturnBtn.addEventListener('click', function() {
+jokeReturnBtn.addEventListener("click", function () {
   returnJoke();
-})
+});
 
 function returnJoke() {
-  jokeBox.classList.remove('hide')
-  jokeReturn.classList.add('hide')
-
+  localStorage.setItem("jokePref", "show");
+  jokeBox.classList.remove("hide");
+  jokeReturn.classList.add("hide");
 }
 
+//Add Complete Class
+completedList.addEventListener("mouseover", function (event) {
+  child = event.target;
+  if (event.target.className === "droptrue connectedSortable c1 ui-sortable") {
+    var list = event.target.children;
+    completedTaks = [];
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].textContent !== "Frogs Eaten") {
+        list[i].classList.add("completed");
+        completedTaks.push(list[i].textContent);
+        localStorage.setItem("completedTasks", JSON.stringify(completedTaks));
+        setLocalStorage();
+      }
+    }
+  }
+});
 
 // Badge Counter ------- ( *** INCOMPLETE *** )
 
-// In order for badge counter to work, 
+// In order for badge counter to work,
 var frogCounter = 0;
 var frogEaten = document.querySelector(".frog-eaten");
 var isFrogEaten = false;
@@ -217,13 +264,12 @@ function getFrogs() {
 }
 
 // Function to Check if Frog is Eaten
-function checkFrogEaten() {
-  if ()
-}
+// function checkFrogEaten() {
+//   if ()
+// }
 
 // Function to Reset Count Every Week (*** WISH LIST ***)
 function resetFrogCount() {
   frogCounter = 0;
   setFrogsEaten();
 }
-
