@@ -82,77 +82,110 @@ var infoZone = [];
 infoZone = JSON.parse(localStorage.getItem("frog"));
 completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
 
-function setLocalStorage() {
-  list = inProgList.children;
-  console.log(list);
-  for (let i = 0; i < list.length; i++) {
-    infoZone = [];
-    console.log(list[i].textContent);
-    infoZone.push(list[i].textContent);
-    console.log(infoZone);
-    localStorage.setItem("frog", JSON.stringify(infoZone));
-  }
-}
-
 function addFrog(event) {
   event.preventDefault();
-  var infoZone = document.getElementById("MyTextArea").value;
+  var infoList = document.getElementById("MyTextArea").value;
+  console.log(infoList);
   infoZone.push(infoList);
-  localStorage.setItem("frog", infoZone);
+  localStorage.setItem("frog", JSON.stringify(infoZone));
   var div = document.createElement("div");
-  div.className= "btnSpace";
+  div.className = "btnSpace";
   var newLine = document.createElement("li");
   div.appendChild(newLine);
-  newLine.textContent = infoZone;
+  newLine.textContent = infoList;
   newLine.className = "task";
   inProgList.append(div);
-  var checkbox = document.createElement("input");
-
-  
   var dltBtn = document.createElement("button");
   div.append(dltBtn);
-  dltBtn.innerHTML = "Remove Task"
+  dltBtn.textContent = "Remove Task";
   dltBtn.setAttribute("class", "button is-light is-small");
   dltBtn.addEventListener("click", removeTask);
-
-  function removeTask() {
-    div.remove();
-  } 
 }
-console.log(infoZone);
+
+function removeTask(event) {
+  event.target.parentElement.remove();
+  setLocalStorage();
+}
+
 function getTask() {
   if (infoZone === null) {
     infoZone = [];
   } else {
     for (let i = 0; i < infoZone.length; i++) {
+      var div = document.createElement("div");
+      div.className = "btnSpace";
       var newLine = document.createElement("li");
-      newLine.className = "task";
+      div.appendChild(newLine);
       newLine.textContent = infoZone[i];
-      inProgList.append(newLine);
+      newLine.className = "btn";
+      inProgList.append(div);
+      var checkbox = document.createElement("input");
+
+      var dltBtn = document.createElement("button");
+      div.append(dltBtn);
+      dltBtn.innerHTML = "Remove Task";
+      dltBtn.setAttribute("class", "button is-light is-small");
+      dltBtn.addEventListener("click", removeTask);
     }
   }
   if (completedTasks === null) {
     completedTasks = [];
   } else {
     for (let i = 0; i < completedTasks.length; i++) {
+      var div = document.createElement("div");
+      div.className = "btnSpace";
       var newLine = document.createElement("li");
-      newLine.className = "task";
+      div.appendChild(newLine);
       newLine.textContent = completedTasks[i];
-      completul.append(newLine);
+      newLine.className = "btnSpace";
+      completul.append(div);
+      var checkbox = document.createElement("input");
+
+      var dltBtn = document.createElement("button");
+      div.append(dltBtn);
+      dltBtn.textContent = "Remove Task";
+      dltBtn.setAttribute("class", "button is-light is-small");
+      dltBtn.addEventListener("click", removeTask);
     }
   }
 }
 getTask();
 
-// localStorage.getItem("frog")
-// JSON.parse(infoZone)
-//   var checkbox = document.createElement("input");
-//   checkbox.type = "checkbox";
-//   checkbox.value = 1;
-//   checkbox.name = "todo[]";
+function setLocalStorage() {
+  infoZone = [];
+  localStorage.setItem("frog", JSON.stringify(infoZone));
+  list = inProgList.children;
+  if (list === null) {
+    infoZone = [];
+    localStorage.setItem("frog", JSON.stringify(infoZone));
+  }
+  for (let i = 0; i < list.length; i++) {
+    infoZone = [];
+    infoZone.push(list[i].children[0].textContent);
+    console.log(infoZone);
+    localStorage.setItem("frog", JSON.stringify(infoZone));
+  }
 
+  completedTaks = [];
+  localStorage.setItem("completedTasks", JSON.stringify(completedTaks));
+  completelist = completul.children;
+  if (completelist === null) {
+    completedTaks = [];
+    localStorage.setItem("completedTasks", JSON.stringify(completedTaks));
+  }
+
+  for (let i = 0; i < completelist.length; i++) {
+    if (completelist[i].textContent !== "Frogs Eaten") {
+      completedTaks.push(completelist[i].children[0].textContent);
+      localStorage.setItem("completedTasks", JSON.stringify(completedTaks));
+    }
+  }
+}
+
+//Adding new Task
 SaveMe.addEventListener("click", addFrog);
 
+//Get Current Time for top nave
 var time = document.getElementById("time");
 
 var currentTime = moment().format("MM/DD/YYYY");
@@ -240,7 +273,7 @@ completedList.addEventListener("mouseover", function (event) {
     for (let i = 0; i < list.length; i++) {
       if (list[i].textContent !== "Frogs Eaten") {
         list[i].classList.add("completed");
-        completedTaks.push(list[i].textContent);
+        completedTaks.push(list[i].children[0].textContent);
         localStorage.setItem("completedTasks", JSON.stringify(completedTaks));
         setLocalStorage();
       }
