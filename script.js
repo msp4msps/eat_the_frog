@@ -75,7 +75,6 @@ function showWeather() {
   showWeatherContainer.classList.remove("hide");
 }
 
-
 var infoZone = [];
 infoZone = JSON.parse(localStorage.getItem("frog"));
 completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
@@ -158,7 +157,6 @@ function setLocalStorage() {
     localStorage.setItem("frog", JSON.stringify(infoZone));
   }
   for (let i = 0; i < list.length; i++) {
-    infoZone = [];
     infoZone.push(list[i].children[0].textContent);
     console.log(infoZone);
     localStorage.setItem("frog", JSON.stringify(infoZone));
@@ -322,17 +320,16 @@ function resetFrogCount() {
 var currentDay = moment();
 console.log(currentDay);
 
-if(currentDay === "Sunday") {
+if (currentDay === "Sunday") {
   $("#frog-eaten").resetFrogCount();
-};
-
+}
 
 // Reward Statement Every Sunday
 var congratulations = document.createElement("h1");
 
 function displayMessage() {
-  congratulations.innerText = ("Great job this week!");
-  // Add message that says how many frogs were eaten 
+  congratulations.innerText = "Great job this week!";
+  // Add message that says how many frogs were eaten
   // VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
   // ----------------------------------------
 }
