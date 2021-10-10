@@ -5,6 +5,7 @@ var inProgList = document.querySelector(".inProg");
 var completedList = document.querySelector(".complete");
 var completul = document.querySelector(".c1");
 
+// Weather Variables
 var hideWeatherContainer = document.getElementById("hide-weather-container");
 var showWeatherContainer = document.getElementById("show-weather-container");
 var frogChillingPic = document.getElementById("frog-chilling-pic");
@@ -74,10 +75,7 @@ function showWeather() {
   showWeatherContainer.classList.remove("hide");
 }
 
-// When page loads, only the weather prompt should be showing.
-// When the user clicks yes, the weather container should display
-// If the user clicks no, the container changes to just an image of a frog
-// There should be a Show/Hide button that toggles the display so the user can change their mind later
+
 var infoZone = [];
 infoZone = JSON.parse(localStorage.getItem("frog"));
 completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
@@ -155,7 +153,7 @@ SaveMe.addEventListener("click", addFrog);
 
 var time = document.getElementById("time");
 
-var currentTime = moment().format("MM/DD/YYYY");
+var currentTime = moment().format("dddd, MMMM Do YYYY");
 
 time.textContent = currentTime;
 
@@ -252,7 +250,7 @@ completedList.addEventListener("mouseover", function (event) {
 
 // In order for badge counter to work,
 var frogCounter = 0;
-var frogEaten = document.querySelector(".frog-eaten");
+var frogEaten = document.getElementById("frog-eaten");
 var isFrogEaten = false;
 
 // Updates Frogs Eaten Count on Screen and Sets Frog Count to  Client Storage
@@ -286,4 +284,22 @@ function getFrogs() {
 function resetFrogCount() {
   frogCounter = 0;
   setFrogsEaten();
+}
+
+var currentDay = moment();
+console.log(currentDay);
+
+if(currentDay === "Sunday") {
+  $("#frog-eaten").resetFrogCount();
+};
+
+
+// Reward Statement Every Sunday
+var congratulations = document.createElement("h1");
+
+function displayMessage() {
+  congratulations.innerText = ("Great job this week!");
+  // Add message that says how many frogs were eaten 
+  // VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+  // ----------------------------------------
 }

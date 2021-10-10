@@ -46,16 +46,16 @@
           <div class="navbar-item">
             <div class="navbar-item title">
               <h1 id="time"></h1>
+            </div>
           </div>
-        </div>
           <div class="navbar-item">
             <div class="navbar-item title">
-              <button class="button is-info is-light"><i class="fas fa-frog 5x"></i>Frogs Eaten This Week <span class="tag is-success frog-eaten">0</span>
+              <button class="button is-info is-light"><i class="fas fa-frog 5x"></i>Frogs Eaten This Week <span class="tag is-success" id = "frog-eaten">0</span>
               </button>
           
+            </div>
           </div>
         </div>
-      </div>
     </nav>
     <section class="section">
       <div class="tile is-ancestor">
@@ -69,10 +69,10 @@
             <div id="show-weather-container">
               <input id="search-bar" type="text" placeholder="Search">
               <button id="search-btn">Search</button>
-              <h2 id="city">Denver</h2>
-              <div id="temp">Temp: 69°</div>
+              <h2 id="city"></h2>
+              <div id="temp"></div>
               <div>
-                <div id="description">Sunny</div>
+                <div id="description"></div>
                 <img src="http://openweather.map.org/img/wn/04n.png" alt="" id="icon" />
                 <button id="hide-weather-btn">Hide</button>
               </div>
@@ -84,7 +84,7 @@
             </div>
               </article>
               <article class="tile is-child notification is-warning">
-                <div class="joke-box"
+                <div class="joke-box"></div>
                 <p class="title">Jokes</p>
                 <p class="subtitle joke-container"></p>
                 <button class="btn button">Get New Joke</button>
@@ -133,6 +133,14 @@
                 <!-- Content -->
               </div>
             </div>
+          </article>
+        </div>
+        <div class="tile is-parent droptrue connectedSortable" id="sortable">
+          <article class="tile is-child notification is-success">
+          <p class="quote">
+            “If it's your job to eat a frog, it's best to do it first thing in the morning. 
+            And if it's your job to eat two frogs, it's best to eat the biggest one first.” - Mark Twain
+          </p>
           </article>
         </div>
       </div>
