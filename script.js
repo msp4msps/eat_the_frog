@@ -1,5 +1,3 @@
-var searchBtn = document.getElementById("search-btn");
-var city = document.getElementById("search-bar");
 var SaveMe = document.getElementById("saveBtn");
 var inProgList = document.querySelector(".inProg");
 var completedList = document.querySelector(".complete");
@@ -11,6 +9,10 @@ var showWeatherContainer = document.getElementById("show-weather-container");
 var frogChillingPic = document.getElementById("frog-chilling-pic");
 var showWeatherBtn = document.getElementById("show-weather-btn");
 var hideWeatherBtn = document.getElementById("hide-weather-btn");
+var searchBtn = document.getElementById("search-btn");
+var city = document.getElementById("search-bar");
+
+
 
 // Current Weather Function
 let weather = {
@@ -279,20 +281,32 @@ completedList.addEventListener("mouseover", function (event) {
 
 // Badge Counter ------- ( *** INCOMPLETE *** )
 
-// In order for badge counter to work,
+
 var frogCounter = 0;
 var frogEaten = document.getElementById("frog-eaten");
 var isFrogEaten = false;
+
+// The init function is called when the page loads
+function init() {
+  getFrogs();
+}
+
+// Function to Check if Frog is Eaten
+if ( ) {
+  frogEaten = true;
+}
+
+
+// Function for Winning a Task / Eaten a frog
+function frogWin() {
+  frogCounter++;
+  setFrogsEaten();
+}
 
 // Updates Frogs Eaten Count on Screen and Sets Frog Count to  Client Storage
 function setFrogsEaten() {
   frogEaten.textContent = frogCounter;
   localStorage.setItem("frogCount", frogCounter);
-}
-
-// The init function is called when the page loads
-function init() {
-  getFrogs();
 }
 
 // Function to Get Frogs Stored in Local Storage
@@ -306,17 +320,14 @@ function getFrogs() {
   frogEaten.textContent = frogCounter;
 }
 
-// Function to Check if Frog is Eaten
-// function checkFrogEaten() {
-//   if ()
-// }
-
 // Function to Reset Count Every Week (*** WISH LIST ***)
 function resetFrogCount() {
   frogCounter = 0;
   setFrogsEaten();
 }
 
+
+// Function to Reset Frog Counter Every Week
 var currentDay = moment();
 console.log(currentDay);
 
