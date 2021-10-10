@@ -96,14 +96,28 @@ function setLocalStorage() {
 
 function addFrog(event) {
   event.preventDefault();
-  var infoList = document.getElementById("MyTextArea").value;
+  var infoZone = document.getElementById("MyTextArea").value;
   infoZone.push(infoList);
-  localStorage.setItem("frog", JSON.stringify(infoZone));
-  var parseThis = JSON.parse(localStorage.getItem("frog"));
+  localStorage.setItem("frog", infoZone);
+  var div = document.createElement("div");
+  div.className= "btnSpace";
   var newLine = document.createElement("li");
-  newLine.textContent = infoList;
+  div.appendChild(newLine);
+  newLine.textContent = infoZone;
   newLine.className = "task";
-  inProgList.append(newLine);
+  inProgList.append(div);
+  var checkbox = document.createElement("input");
+
+  
+  var dltBtn = document.createElement("button");
+  div.append(dltBtn);
+  dltBtn.innerHTML = "Remove Task"
+  dltBtn.setAttribute("class", "button is-light is-small");
+  dltBtn.addEventListener("click", removeTask);
+
+  function removeTask() {
+    div.remove();
+  } 
 }
 console.log(infoZone);
 function getTask() {
