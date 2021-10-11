@@ -164,18 +164,18 @@ function setLocalStorage() {
     localStorage.setItem("frog", JSON.stringify(infoZone));
   }
 
-  completedTaks = [];
-  localStorage.setItem("completedTasks", JSON.stringify(completedTaks));
+  completedTasks = [];
+  localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
   completelist = completul.children;
   if (completelist === null) {
-    completedTaks = [];
-    localStorage.setItem("completedTasks", JSON.stringify(completedTaks));
+    completedTasks = [];
+    localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
   }
 
   for (let i = 0; i < completelist.length; i++) {
     if (completelist[i].textContent !== "Frogs Eaten") {
-      completedTaks.push(completelist[i].children[0].textContent);
-      localStorage.setItem("completedTasks", JSON.stringify(completedTaks));
+      completedTasks.push(completelist[i].children[0].textContent);
+      localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
     }
   }
 }
@@ -267,12 +267,12 @@ completedList.addEventListener("mouseover", function (event) {
   child = event.target;
   if (event.target.className === "droptrue connectedSortable c1 ui-sortable") {
     var list = event.target.children;
-    completedTaks = [];
+    completedTasks = [];
     for (let i = 0; i < list.length; i++) {
       if (list[i].textContent !== "Frogs Eaten") {
         list[i].classList.add("completed");
-        completedTaks.push(list[i].children[0].textContent);
-        localStorage.setItem("completedTasks", JSON.stringify(completedTaks));
+        completedTasks.push(list[i].children[0].textContent);
+        localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
         setLocalStorage();
       }
     }
@@ -291,8 +291,9 @@ function init() {
   getFrogs();
 }
 
-// Function to Check if Frog is Eaten
-if ( ) {
+// // Function to Check if Frog is Eaten
+if (completedTasks(list[i]++)) {
+  console.log(completedTasks);
   frogEaten = true;
 }
 
