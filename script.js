@@ -194,7 +194,7 @@ var hideBtn = document.querySelector(".hide-btn");
 var jokeBox = document.querySelector(".joke-box");
 var jokeReturn = document.querySelector(".return-box");
 var jokeReturnBtn = document.querySelector(".show-jokes");
-var jokeInnersection = document.querySelector(".joke-innersection")
+var jokeInnersection = document.querySelector(".joke-innersection");
 // displays joke on load
 document.addEventListener("DOMContentLoaded", getJoke);
 
@@ -229,7 +229,7 @@ function getPreferences() {
     hideWeather();
   }
   if (jokePref === "hide") {
-   // hideJoke();
+    // hideJoke();
   }
 }
 
@@ -257,7 +257,7 @@ function returnJoke() {
   localStorage.setItem("jokePref", "show");
   jokeBox.classList.remove("hide");
   jokeReturn.classList.add("hide");
-  jokeInnersection.classList.remove("hide")
+  jokeInnersection.classList.remove("hide");
 }
 
 //Add Complete Class
@@ -324,15 +324,8 @@ function resetFrogCount() {
 }
 
 function sundayCongrats() {
-  var currentDay = moment().format('dddd');
-if (currentDay == 'Sunday') {
-    alert ("Great work this Week")
+  var currentDay = moment().format("dddd");
+  if (currentDay == "Sunday") {
+    alert("Great work this Week");
   }
-// Function to Reset Frog Counter Every Week
-var currentDay = moment();
-console.log(currentDay);
-
-if (currentDay === "Sunday") {
-  $("#frog-eaten").resetFrogCount();
 }
-
