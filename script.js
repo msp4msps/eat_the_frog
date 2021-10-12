@@ -1,5 +1,3 @@
-var searchBtn = document.getElementById("search-btn");
-var city = document.getElementById("search-bar");
 var SaveMe = document.getElementById("saveBtn");
 var inProgList = document.querySelector(".inProg");
 var completedList = document.querySelector(".complete");
@@ -11,6 +9,8 @@ var showWeatherContainer = document.getElementById("show-weather-container");
 var frogChillingPic = document.getElementById("frog-chilling-pic");
 var showWeatherBtn = document.getElementById("show-weather-btn");
 var hideWeatherBtn = document.getElementById("hide-weather-btn");
+var searchBtn = document.getElementById("search-btn");
+var city = document.getElementById("search-bar");
 
 // Current Weather Function
 let weather = {
@@ -134,7 +134,6 @@ function getTask() {
       var newLine = document.createElement("li");
       div.appendChild(newLine);
       newLine.textContent = completedTasks[i];
-      newLine.className = "btnSpace";
       completul.append(div);
       var checkbox = document.createElement("input");
 
@@ -162,18 +161,18 @@ function setLocalStorage() {
     localStorage.setItem("frog", JSON.stringify(infoZone));
   }
 
-  completedTaks = [];
-  localStorage.setItem("completedTasks", JSON.stringify(completedTaks));
+  completedTasks = [];
+  localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
   completelist = completul.children;
   if (completelist === null) {
-    completedTaks = [];
-    localStorage.setItem("completedTasks", JSON.stringify(completedTaks));
+    completedTasks = [];
+    localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
   }
 
   for (let i = 0; i < completelist.length; i++) {
     if (completelist[i].textContent !== "Frogs Eaten") {
-      completedTaks.push(completelist[i].children[0].textContent);
-      localStorage.setItem("completedTasks", JSON.stringify(completedTaks));
+      completedTasks.push(completelist[i].children[0].textContent);
+      localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
     }
   }
 }
@@ -266,12 +265,12 @@ completedList.addEventListener("mouseover", function (event) {
   child = event.target;
   if (event.target.className === "droptrue connectedSortable c1 ui-sortable") {
     var list = event.target.children;
-    completedTaks = [];
+    completedTasks = [];
     for (let i = 0; i < list.length; i++) {
       if (list[i].textContent !== "Frogs Eaten") {
         list[i].classList.add("completed");
-        completedTaks.push(list[i].children[0].textContent);
-        localStorage.setItem("completedTasks", JSON.stringify(completedTaks));
+        completedTasks.push(list[i].children[0].textContent);
+        localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
         setLocalStorage();
       }
     }
@@ -280,20 +279,31 @@ completedList.addEventListener("mouseover", function (event) {
 
 // Badge Counter ------- ( *** INCOMPLETE *** )
 
-// In order for badge counter to work,
 var frogCounter = 0;
 var frogEaten = document.getElementById("frog-eaten");
 var isFrogEaten = false;
+
+// The init function is called when the page loads
+function init() {
+  getFrogs();
+}
+
+// // Function to Check if Frog is Eaten
+if (completedTasks(list[i]++)) {
+  console.log(completedTasks);
+  frogEaten = true;
+}
+
+// Function for Winning a Task / Eaten a frog
+function frogWin() {
+  frogCounter++;
+  setFrogsEaten();
+}
 
 // Updates Frogs Eaten Count on Screen and Sets Frog Count to  Client Storage
 function setFrogsEaten() {
   frogEaten.textContent = frogCounter;
   localStorage.setItem("frogCount", frogCounter);
-}
-
-// The init function is called when the page loads
-function init() {
-  getFrogs();
 }
 
 // Function to Get Frogs Stored in Local Storage
@@ -307,11 +317,6 @@ function getFrogs() {
   frogEaten.textContent = frogCounter;
 }
 
-// Function to Check if Frog is Eaten
-// function checkFrogEaten() {
-//   if ()
-// }
-
 // Function to Reset Count Every Week (*** WISH LIST ***)
 function resetFrogCount() {
   frogCounter = 0;
@@ -323,5 +328,11 @@ function sundayCongrats() {
 if (currentDay == 'Sunday') {
     alert ("Great work this Week")
   }
+// Function to Reset Frog Counter Every Week
+var currentDay = moment();
+console.log(currentDay);
+
+if (currentDay === "Sunday") {
+  $("#frog-eaten").resetFrogCount();
 }
 
