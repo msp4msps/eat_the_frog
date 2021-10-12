@@ -12,8 +12,6 @@ var hideWeatherBtn = document.getElementById("hide-weather-btn");
 var searchBtn = document.getElementById("search-btn");
 var city = document.getElementById("search-bar");
 
-
-
 // Current Weather Function
 let weather = {
   apiKey: "275bd71fcc87ee1fd19695e4aee1f3bb",
@@ -136,7 +134,6 @@ function getTask() {
       var newLine = document.createElement("li");
       div.appendChild(newLine);
       newLine.textContent = completedTasks[i];
-      newLine.className = "btnSpace";
       completul.append(div);
       var checkbox = document.createElement("input");
 
@@ -217,7 +214,7 @@ function getJoke() {
 hideBtn.addEventListener("click", function () {
   localStorage.setItem("jokePref", "hide");
   hideJoke();
-  hideBtn.classList.add();
+  // hideBtn.classList.add();
 });
 
 function hideJoke() {
@@ -281,7 +278,6 @@ completedList.addEventListener("mouseover", function (event) {
 
 // Badge Counter ------- ( *** INCOMPLETE *** )
 
-
 var frogCounter = 0;
 var frogEaten = document.getElementById("frog-eaten");
 var isFrogEaten = false;
@@ -296,7 +292,6 @@ if (completedTasks(list[i]++)) {
   console.log(completedTasks);
   frogEaten = true;
 }
-
 
 // Function for Winning a Task / Eaten a frog
 function frogWin() {
@@ -326,7 +321,6 @@ function resetFrogCount() {
   frogCounter = 0;
   setFrogsEaten();
 }
-
 
 // Function to Reset Frog Counter Every Week
 var currentDay = moment();
