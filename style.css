@@ -46,6 +46,10 @@
   border-radius: 4px;
 }
 
+#hide-weather-container img {
+  margin-bottom: 10px;
+}
+
 .show-jokes {
   margin-top: 20px;
 }
@@ -53,4 +57,8 @@
 .quote {
   font-size: large;
   font-family: fantasy;
+}
+
+.button {
+  border-radius: 4px;
 }
