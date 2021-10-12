@@ -337,7 +337,7 @@ closeModal.addEventListener("click", function () {
 
 function sundayCongrats() {
   var currentDay = moment().format("dddd");
-  if (currentDay == "Monday") {
+  if (currentDay == "Sunday") {
     modalBody.textContent = `Great work this week, you ate ${frogCount} frogs!`;
     modal.className = "modal is-active";
     resetFrogCount();

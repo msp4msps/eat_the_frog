@@ -50,6 +50,10 @@
   margin-bottom: 10px;
 }
 
+#saveBtn {
+  margin-top: 10px;
+}
+
 .show-jokes {
   margin-top: 20px;
 }
