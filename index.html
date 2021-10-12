@@ -40,13 +40,29 @@
         <div class="navbar-item">
           <div class="navbar-item title">
             <button class="button is-info is-light"><i class="fas fa-frog 5x"></i>Frogs Eaten This Week <span
-                class="tag is-success" id="frog-eaten">0</span>
+                class="tag is-success" id="frog-eaten">  0</span>
             </button>
 
           </div>
         </div>
       </div>
   </nav>
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Great Job!</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <img src="/Assets/thumbs_up_frog.jpeg">
+      <section class="modal-card-body">
+        <!-- Content ... -->
+      </section>
+      <footer class="modal-card-foot">
+
+      </footer>
+    </div>
+  </div>
   <section class="section">
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-7">
@@ -58,18 +74,18 @@
 
               <div id="show-weather-container">
                 <input id="search-bar" type="text" placeholder="Search">
-                <button id="search-btn">Search</button>
+                <button id="search-btn" class="button">Search</button>
                 <h2 id="city"></h2>
                 <div id="temp"></div>
                 <div>
                   <div id="description"></div>
                   <img src="http://openweathermap.org/img/w/04n.png" alt="" id="icon" />
-                  <button id="hide-weather-btn">Hide</button>
+                  <button id="hide-weather-btn" class="button">Hide</button>
                 </div>
               </div>
             <div id="hide-weather-container" class="hide">
-              <img src="./Assets/chillin frog.jpeg" />
-              <button id="show-weather-btn">Show</button>
+              <img class="frogpic" src="./Assets/chillin frog.jpeg" />
+              <button id="show-weather-btn" class="button">Show</button>
             </div>
               </article>
               <article class="tile is-child notification is-warning">
@@ -81,7 +97,7 @@
                 </div>
                 <div class="return-box hide">
                   <img class="frogpic" src="./Assets/frog placeholder.jpg" width="300">
-                  <button class="show-jokes">Show me jokes again</button>
+                  <button class="show-jokes button">Show me jokes again</button>
                 </div>
               </div>
 
@@ -101,7 +117,7 @@
               <form>
                 <label for="fname">Frog to Eat Today!:</label><br>
                 <input type="text" id="MyTextArea" name="fname"><br>
-                <button id="saveBtn">Save</button>
+                <button id="saveBtn" class="button">Save</button>
               </form>
               <ul id="sortable1" class="droptrue inProg">
                 <!-- <li class="ui-state-default">Item 1</li> -->

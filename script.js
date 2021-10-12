@@ -82,7 +82,6 @@ completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
 function addFrog(event) {
   event.preventDefault();
   var infoList = document.getElementById("MyTextArea").value;
-  console.log(infoList);
   infoZone.push(infoList);
   localStorage.setItem("frog", JSON.stringify(infoZone));
   var div = document.createElement("div");
@@ -157,7 +156,6 @@ function setLocalStorage() {
   }
   for (let i = 0; i < list.length; i++) {
     infoZone.push(list[i].children[0].textContent);
-    console.log(infoZone);
     localStorage.setItem("frog", JSON.stringify(infoZone));
   }
 
@@ -175,6 +173,7 @@ function setLocalStorage() {
       localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
     }
   }
+  setFrogsEaten();
 }
 
 //Adding new Task
@@ -218,7 +217,8 @@ hideBtn.addEventListener("click", function () {
 });
 
 function hideJoke() {
-  jokeInnersection.classList.add("hide");
+  jokeBox.classList.add("hide");
+  localStorage.getItem("jokePref", "hide");
   jokeReturn.classList.remove("hide");
 }
 
@@ -229,7 +229,7 @@ function getPreferences() {
     hideWeather();
   }
   if (jokePref === "hide") {
-    // hideJoke();
+    hideJoke();
   }
 }
 
@@ -257,7 +257,6 @@ function returnJoke() {
   localStorage.setItem("jokePref", "show");
   jokeBox.classList.remove("hide");
   jokeReturn.classList.add("hide");
-  jokeInnersection.classList.remove("hide");
 }
 
 //Add Complete Class
@@ -269,7 +268,7 @@ completedList.addEventListener("mouseover", function (event) {
     for (let i = 0; i < list.length; i++) {
       if (list[i].textContent !== "Frogs Eaten") {
         list[i].classList.add("completed");
-        completedTasks.push(list[i].children[0].textContent);
+        completedTasks.push(list[i].children[0]);
         localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
         setLocalStorage();
       }
@@ -289,10 +288,10 @@ function init() {
 }
 
 // // Function to Check if Frog is Eaten
-if (completedTasks(list[i]++)) {
-  console.log(completedTasks);
-  frogEaten = true;
-}
+// if (completedTasks(list[i]++)) {
+//   console.log(completedTasks);
+//   frogEaten = true;
+// }
 
 // Function for Winning a Task / Eaten a frog
 function frogWin() {
@@ -302,9 +301,13 @@ function frogWin() {
 
 // Updates Frogs Eaten Count on Screen and Sets Frog Count to  Client Storage
 function setFrogsEaten() {
-  frogEaten.textContent = frogCounter;
-  localStorage.setItem("frogCount", frogCounter);
+  var frogs = JSON.parse(localStorage.getItem("completedTasks"));
+  frogCount = frogs.length;
+  frogEaten.textContent = frogCount;
+  localStorage.setItem("frogCount", frogCount);
+  return frogCount;
 }
+setFrogsEaten();
 
 // Function to Get Frogs Stored in Local Storage
 function getFrogs() {
@@ -323,9 +326,20 @@ function resetFrogCount() {
   setFrogsEaten();
 }
 
+var modal = document.querySelector(".modal");
+var modalBody = document.querySelector(".modal-card-body");
+var closeModal = document.querySelector(".delete");
+
+//Modal
+closeModal.addEventListener("click", function () {
+  modal.className = "modal";
+});
+
 function sundayCongrats() {
   var currentDay = moment().format("dddd");
-  if (currentDay == "Sunday") {
-    alert("Great work this Week");
+  if (currentDay == "Monday") {
+    modalBody.textContent = `Great work this week, you ate ${frogCount} frogs!`;
+    modal.className = "modal is-active";
+    resetFrogCount();
   }
 }
