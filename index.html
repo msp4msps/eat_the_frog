@@ -1,153 +1,149 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Eat the Frog</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <img src="Assets/frog.png" width="90" height="28" />
 
-        <a
-          role="button"
-          class="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eat the Frog</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="sundayCongrats()">
+  <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <img src="Assets/frog.png" width="90" height="28" />
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <h1 class="navbar-item title"></h1>
       </div>
-
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <h1 class="navbar-item title"></h1>
-        </div>
-        <div class="navbar-start">
-          <h1 class="navbar-item title">Eat the Frog</h1>
-        </div>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="navbar-item title">
-              <h1 id="time"></h1>
-            </div>
-          </div>
-          <div class="navbar-item">
-            <div class="navbar-item title">
-              <button class="button is-info is-light"><i class="fas fa-frog 5x"></i>Frogs Eaten This Week <span class="tag is-success" id = "frog-eaten">0</span>
-              </button>
-          
-            </div>
+      <div class="navbar-start">
+        <h1 class="navbar-item title">Eat the Frog</h1>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="navbar-item title">
+            <h1 id="time"></h1>
           </div>
         </div>
-    </nav>
-    <section class="section">
-      <div class="tile is-ancestor">
-        <div class="tile is-vertical is-7">
-          <div class="tile">
-            <div class="tile is-parent is-vertical">
-              <article class="tile is-child notification is-primary">
-                <p class="title">Weather</p>
-                <p class="subtitle"></p>
+        <div class="navbar-item">
+          <div class="navbar-item title">
+            <button class="button is-info is-light"><i class="fas fa-frog 5x"></i>Frogs Eaten This Week <span
+                class="tag is-success" id="frog-eaten">0</span>
+            </button>
 
-            <div id="show-weather-container">
-              <input id="search-bar" type="text" placeholder="Search">
-              <button id="search-btn">Search</button>
-              <h2 id="city"></h2>
-              <div id="temp"></div>
-              <div>
-                <div id="description"></div>
-                <img src="http://openweather.map.org/img/wn/04n.png" alt="" id="icon" />
-                <button id="hide-weather-btn">Hide</button>
-              </div>
-            </div>
+          </div>
+        </div>
+      </div>
+  </nav>
+  <section class="section">
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-7">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification is-primary">
+              <p class="title">Weather</p>
+              <p class="subtitle"></p>
 
-            <div id="hide-weather-container" class="hide">
-              <img src="./Assets/chillin frog.jpeg" />
-              <button id="show-weather-btn">Show</button>
-            </div>
-              </article>
-              <article class="tile is-child notification is-warning">
-                <div class="joke-box"></div>
-                <p class="title">Jokes</p>
-                <p class="subtitle joke-container"></p>
-                <button class="btn button">Get New Joke</button>
-                <button class="hide-btn button">Don't show me jokes!</button>
+              <div id="show-weather-container">
+                <input id="search-bar" type="text" placeholder="Search">
+                <button id="search-btn">Search</button>
+                <h2 id="city"></h2>
+                <div id="temp"></div>
+                <div>
+                  <div id="description"></div>
+                  <img src="http://openweathermap.org/img/w/04n.png" alt="" id="icon" />
+                  <button id="hide-weather-btn">Hide</button>
                 </div>
+              </div>
+
+              <div id="hide-weather-container" class="hide">
+                <img src="./Assets/chillin frog.jpeg" />
+                <button id="show-weather-btn">Show</button>
+              </div>
+            </article>
+            <article class="tile is-child notification is-warning">
+              <div class="joke-box">
+                <div class="joke-innersection">
+                  <p class="title">Jokes</p>
+                  <p class="subtitle joke-container"></p>
+                  <button class="btn button">Get New Joke</button>
+                  <button class="hide-btn button">Don't show me jokes!</button>
+               </div>
+                
+                
                 <div class="return-box hide">
-                  <img class= "frogpic" src="./Assets/frog placeholder.jpg" width="300">
+                  <img class="frogpic" src="./Assets/frog placeholder.jpg" width="300">
                   <button class="show-jokes">Show me jokes again</button>
                 </div>
-              </article>
-            </div>
-            <!-- <div class="tile is-parent">
+              </div>
+
+            </article>
+          </div>
+          <!-- <div class="tile is-parent">
               <article class="tile is-child notification is-info">
                 <p class="title">+ AddWeather</p>
               </article>
             </div> -->
-          </div>
-          <div class="tile is-parent">
-            <article class="tile is-child notification is-danger">
-              <p class="title">+ Add New Daily Task</p>
-              <p class="subtitle">Eat the frog!</p>
-              <div class="content">
-                <form>
-                  <label for="fname">Frog to Eat Today!:</label><br>
-                  <input type="text" id="MyTextArea" name="fname"><br>
-                  <button id="saveBtn">Save</button>
-                </form>
-                <ul id="sortable1" class="droptrue inProg">
-                  <!-- <li class="ui-state-default">Item 1</li> -->
-                </ul>
-          
-                <!-- Content -->
-              </div>
-            </article>
-          </div>
         </div>
-        <div class="tile is-parent droptrue connectedSortable complete" id="sortable">
-          <article class="tile is-child notification is-success">
-            <div class="content droptrue" id="sortable1">
-              <p class="title">Completed Task</p>
-              <ul id="sortable" class="droptrue connectedSortable c1">
-                <li class="none-task ">Frogs Eaten</li>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-danger">
+            <p class="title">+ Add New Daily Task</p>
+            <p class="subtitle">Eat the frog!</p>
+            <div class="content">
+              <form>
+                <label for="fname">Frog to Eat Today!:</label><br>
+                <input type="text" id="MyTextArea" name="fname"><br>
+                <button id="saveBtn">Save</button>
+              </form>
+              <ul id="sortable1" class="droptrue inProg">
+                <!-- <li class="ui-state-default">Item 1</li> -->
               </ul>
-              <p class="subtitle"></p>
-              <div class="content">
-                <!-- Content -->
-              </div>
+
+              <!-- Content -->
             </div>
           </article>
         </div>
-        <div class="tile is-parent droptrue connectedSortable" id="sortable">
-          <article class="tile is-child notification is-success">
+      </div>
+      <div class="tile is-parent droptrue connectedSortable complete" id="sortable">
+        <article class="tile is-child notification is-success">
+          <div class="content droptrue" id="sortable1">
+            <p class="title">Completed Task</p>
+            <ul id="sortable" class="droptrue connectedSortable c1">
+              <li class="none-task ">Frogs Eaten</li>
+            </ul>
+            <p class="subtitle"></p>
+            <div class="content">
+              <!-- Content -->
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="tile is-parent droptrue connectedSortable" id="sortable">
+        <article class="tile is-child notification is-success">
           <p class="quote">
-            “If it's your job to eat a frog, it's best to do it first thing in the morning. 
+            “If it's your job to eat a frog, it's best to do it first thing in the morning.
             And if it's your job to eat two frogs, it's best to eat the biggest one first.” - Mark Twain
           </p>
-          </article>
-        </div>
+        </article>
       </div>
-    </section>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="script.js"></script>
-  </body>
+    </div>
+  </section>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>
