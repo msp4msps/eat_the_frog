@@ -75,6 +75,8 @@ function showWeather() {
   showWeatherContainer.classList.remove("hide");
 }
 
+//Set Local storage with Task
+
 var infoZone = [];
 infoZone = JSON.parse(localStorage.getItem("frog"));
 completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
@@ -276,8 +278,6 @@ completedList.addEventListener("mouseover", function (event) {
   }
 });
 
-// Badge Counter ------- ( *** INCOMPLETE *** )
-
 var frogCounter = 0;
 var frogEaten = document.getElementById("frog-eaten");
 var isFrogEaten = false;
@@ -286,12 +286,6 @@ var isFrogEaten = false;
 function init() {
   getFrogs();
 }
-
-// // Function to Check if Frog is Eaten
-// if (completedTasks(list[i]++)) {
-//   console.log(completedTasks);
-//   frogEaten = true;
-// }
 
 // Function for Winning a Task / Eaten a frog
 function frogWin() {
